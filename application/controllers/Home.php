@@ -61,4 +61,27 @@ class Home extends CI_Controller {
 		$this->session->set_flashdata('message', 'Form has been submitted successfully.');
 		redirect('home');
 	}
+
+	public function test_form()
+	{
+
+		$this->data['active_li'] = 'upload_file';
+
+		$this->data['page'] = 'test_form_view';
+		if ($this->input->post()) {
+			// pr($this->input->post());die;
+			$this->data['first_name'] = $this->input->post('name');
+			$this->data['email'] = $this->input->post('email');
+
+			$this->load->vars($this->data);
+			$this->load->view('template');
+
+
+		}else{
+			$this->load->vars($this->data);
+			$this->load->view('template');
+		}
+
+		
+	}
 }
